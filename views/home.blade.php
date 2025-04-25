@@ -4,8 +4,10 @@
         <h1>Premium Hosting Solutions</h1>
         <p>With Enterprise DDoS Protection</p>
         <div class="flex gap-4 justify-center">
-            <a href="{{ route('category.index') }}" class="btn btn-primary">View Our Services</a>
-            <a href="{{ route('tickets.create') }}" class="btn btn-outline">Contact Sales</a>
+            <a href="{{ url('/') }}" class="btn btn-primary">View Our Services</a>
+            <a href="{{ auth()->check() ? route('tickets.create') : route('login') }}" class="btn btn-outline">
+                {{ auth()->check() ? 'Contact Sales' : 'Login for Support' }}
+            </a>
         </div>
     </div>
 
@@ -210,9 +212,9 @@
             
             <div class="text-center mt-8">
                 <p class="text-base/70 mb-4">Have more questions?</p>
-                <a href="{{ route('tickets.create') }}" wire:navigate>
+                <a href="{{ auth()->check() ? route('tickets.create') : route('login') }}" wire:navigate>
                     <button class="bg-primary text-white hover:bg-primary/90 transition-colors duration-200 py-2 px-6 rounded-md font-medium">
-                        Contact Us
+                        {{ auth()->check() ? 'Contact Us' : 'Login to Contact Support' }}
                     </button>
                 </a>
             </div>
