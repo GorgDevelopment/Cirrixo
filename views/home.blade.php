@@ -11,55 +11,10 @@
         </div>
     </div>
 
-    <!-- Virtual Private Servers Section -->
-    <div class="card mb-16 hover-lift">
-        <div class="card-body p-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div>
-                    <h2 class="text-2xl font-bold mb-2">Virtual Private Servers</h2>
-                    <p class="text-muted mb-4">High Performance & Affordable Virtual Private Servers! Click the button below to view.</p>
-                    <a href="{{ url('/') }}" class="btn btn-primary">View Plans</a>
-                </div>
-                <div class="mt-6 md:mt-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Categories Section -->
-    @if(count($categories) > 0)
-    <div class="mb-16">
-        <h2 class="text-2xl font-bold mb-6 text-center">Our Products</h2>
-        <div class="features">
-            @foreach ($categories as $category)
-                <div class="card">
-                    <div class="card-body">
-                        @if ($category->image)
-                            <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}" class="w-full h-40 object-cover object-center rounded-md mb-4">
-                        @endif
-                        <h3 class="card-title">{{ $category->name }}</h3>
-                        @if(theme('show_category_description', true))
-                            <div class="card-text">
-                                {!! $category->description !!}
-                            </div>
-                        @endif
-                        <a href="{{ route('category.show', ['category' => $category->slug]) }}" wire:navigate class="btn btn-primary w-full">
-                            {{ __('general.view') }}
-                        </a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-    @endif
-
-    <!-- Why Choose Us Section -->
+    <!-- Why Choose Cirrixo Section -->
     <div class="mb-16">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-4">Why Choose Us</h2>
+            <h2 class="text-3xl font-bold mb-4">Why Choose Cirrixo</h2>
             <p class="text-muted max-w-3xl mx-auto">
                 We offer enterprise-grade infrastructure for businesses and gamers alike with a focus on performance, security, and reliability.
             </p>
@@ -140,20 +95,35 @@
         </div>
     </div>
 
-    <!-- Call to Action -->
-    <div class="cta">
-        <h2>Ready to Get Started?</h2>
-        <p>Choose the perfect hosting solution for your needs with our high-performance infrastructure and 24/7 expert support.</p>
-        <div class="flex gap-4 justify-center">
-            <a href="{{ url('/') }}" class="btn btn-primary">View Plans</a>
-            <a href="{{ auth()->check() ? route('tickets.create') : route('login') }}" class="btn btn-outline">
-                {{ auth()->check() ? 'Contact Sales' : 'Create Account' }}
-            </a>
+    <!-- Categories Section -->
+    @if(count($categories ?? []) > 0)
+    <div class="mb-16">
+        <h2 class="text-2xl font-bold mb-6 text-center">Our Products</h2>
+        <div class="features">
+            @foreach ($categories as $category)
+                <div class="card">
+                    <div class="card-body">
+                        @if ($category->image)
+                            <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}" class="w-full h-40 object-cover object-center rounded-md mb-4">
+                        @endif
+                        <h3 class="card-title">{{ $category->name }}</h3>
+                        @if(theme('show_category_description', true))
+                            <div class="card-text">
+                                {!! $category->description !!}
+                            </div>
+                        @endif
+                        <a href="{{ route('category.show', ['category' => $category->slug]) }}" wire:navigate class="btn btn-primary w-full">
+                            {{ __('general.view') }}
+                        </a>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
+    @endif
 
     <!-- FAQ Section -->
-    <div class="faq mb-16">
+    <div class="mb-16">
         <div class="text-center mb-12">
             <h2 class="text-3xl font-bold mb-2">Frequently Asked Questions</h2>
             <p class="text-muted">Find answers to common questions about our hosting services and infrastructure.</p>
@@ -210,13 +180,47 @@
                     <p>We provide enterprise-grade DDoS protection with mitigation capacity up to 10 Tbps. Our multi-layered defense system includes traffic scrubbing, anomaly detection, and real-time mitigation against all types of DDoS attacks, including layer 3/4 volumetric attacks and layer 7 application-layer attacks.</p>
                 </div>
             </div>
+            
+            <div class="faq-item">
+                <h3 @click="selected !== 4 ? selected = 4 : selected = null" class="faq-question">
+                    <span class="text-lg font-semibold">Do I get full root/admin access to my server?</span>
+                    <span class="text-primary">
+                        <svg x-show="selected !== 4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        <svg x-show="selected === 4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                        </svg>
+                    </span>
+                </h3>
+                <div x-show="selected === 4" x-transition class="faq-answer">
+                    <p>Yes, all our VPS and dedicated server plans come with full root/administrator access, giving you complete control over your server environment. You can install custom software, configure services, and manage your server exactly as you need.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <h3 @click="selected !== 5 ? selected = 5 : selected = null" class="faq-question">
+                    <span class="text-lg font-semibold">What payment methods do you accept?</span>
+                    <span class="text-primary">
+                        <svg x-show="selected !== 5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        <svg x-show="selected === 5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                        </svg>
+                    </span>
+                </h3>
+                <div x-show="selected === 5" x-transition class="faq-answer">
+                    <p>We accept all major credit cards, PayPal, bank transfers, and various cryptocurrencies including Bitcoin, Ethereum, and others. For enterprise clients, we also offer net-30 payment terms upon request and credit approval.</p>
+                </div>
+            </div>
         </div>
 
         <div class="text-center mt-8">
             <p class="text-muted mb-4">Have more questions?</p>
             <a href="{{ auth()->check() ? route('tickets.create') : route('login') }}" wire:navigate>
                 <button class="btn btn-primary">
-                    {{ auth()->check() ? 'Contact Us' : 'Login to Contact Support' }}
+                    Contact Us
                 </button>
             </a>
         </div>

@@ -12,6 +12,28 @@
         @endisset
     </title>
 
+    <?php
+    $theme = Theme::active();
+    $manifestPath = public_path($theme . '/manifest.json');
+    $lowerManifestPath = public_path(strtolower($theme) . '/manifest.json');
+    
+    if (file_exists($manifestPath) && filesize($manifestPath) > 0) {
+        $manifestExists = true;
+    } elseif (file_exists($lowerManifestPath) && filesize($lowerManifestPath) > 0) {
+        $manifestExists = true;
+        $theme = strtolower($theme);
+    } else {
+        $manifestExists = false;
+    }
+    ?>
+
+    @if($manifestExists)
+        @vite(['themes/' . strtolower($theme) . '/css/app.css', 'themes/' . strtolower($theme) . '/js/app.js'], $theme)
+    @else
+        <link rel="stylesheet" href="/{{ $theme }}/assets/app-HiANTs8a.css">
+        <script src="/{{ $theme }}/assets/app-DvN4n7f7.js" defer></script>
+    @endif
+
     <!-- Complete inline CSS for the modern theme -->
     <style>
         [x-cloak] { display: none !important; }
