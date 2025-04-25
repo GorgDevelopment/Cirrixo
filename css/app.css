@@ -74,6 +74,39 @@ color utility to any element that depends on these defaults.
   .panel-dropdown {
     @apply bg-background-secondary border border-neutral rounded-md shadow-lg overflow-hidden;
   }
+  
+  /* Footer Styles */
+  .footer {
+    @apply bg-background-secondary border-t border-neutral;
+  }
+  
+  .footer-brand {
+    @apply flex items-center gap-2 text-base font-medium;
+  }
+  
+  .footer-logo {
+    @apply h-8 w-auto;
+  }
+  
+  .footer-heading {
+    @apply text-base font-semibold;
+  }
+  
+  .footer-link {
+    @apply text-sm text-muted hover:text-primary transition-colors duration-200;
+  }
+  
+  .footer-social-link {
+    @apply text-muted hover:text-primary transition-colors duration-200;
+  }
+  
+  .text-muted {
+    @apply text-muted;
+  }
+  
+  .border-border-color {
+    @apply border-neutral/50;
+  }
 }
 
 @utility text-nowrap {

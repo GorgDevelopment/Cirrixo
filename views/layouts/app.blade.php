@@ -12,25 +12,26 @@
         @endisset
     </title>
 
-    <!-- Style reset -->
+    <!-- Style reset and Alpine.js cloak -->
     <style>
         [x-cloak] { display: none !important; }
     </style>
 
-    <!-- Multiple CSS approaches to ensure one works -->
-    <link rel="stylesheet" href="/Cirrixo/assets/app-HiANTs8a.css">
-    <link rel="stylesheet" href="/cirrixo/assets/app-HiANTs8a.css">
+    <!-- Theme CSS -->
     <link rel="stylesheet" href="/cirrixo_theme.css">
     
-    <!-- Alpine.js CDN -->
+    <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- Theme colors -->
     @include('layouts.colors')
 
+    <!-- Favicon -->
     @if (config('settings.logo'))
         <link rel="icon" href="{{ Storage::url(config('settings.logo')) }}" type="image/png">
     @endif
 
+    <!-- Meta tags -->
     @isset($title)
     <meta content="{{ isset($title) ? config('app.name', 'Paymenter') . ' - ' . $title : config('app.name', 'Paymenter') }}" property="og:title">
     <meta content="{{ isset($title) ? config('app.name', 'Paymenter') . ' - ' . $title : config('app.name', 'Paymenter') }}" name="title">
@@ -45,75 +46,48 @@
     @endisset
    
     <meta name="theme-color" content="{{ theme('primary') }}">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Basic fallback styles -->
-    <style>
-        :root {
-            --primary-color: #0ea5e9;
-            --background-color: #ffffff;
-            --background-secondary-color: #f8fafc;
-            --text-color: #1e293b;
-            --neutral-color: #e2e8f0;
-        }
-        .dark {
-            --primary-color: #0ea5e9;
-            --background-color: #0f172a;
-            --background-secondary-color: #1e293b;
-            --text-color: #f8fafc;
-            --neutral-color: #334155;
-        }
-        .text-primary { color: var(--primary-color); }
-        .bg-primary { background-color: var(--primary-color); }
-        .bg-background { background-color: var(--background-color); }
-        .bg-background-secondary { background-color: var(--background-secondary-color); }
-        .text-base { color: var(--text-color); }
-        .border-neutral { border-color: var(--neutral-color); }
-        .text-white { color: white; }
-        .p-4 { padding: 1rem; }
-        .flex { display: flex; }
-        .flex-col { flex-direction: column; }
-        .gap-2 { gap: 0.5rem; }
-        .rounded { border-radius: 0.25rem; }
-        .w-full { width: 100%; }
-        .min-h-screen { min-height: 100vh; }
-        .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        .flex-grow { flex-grow: 1; }
-        .overflow-auto { overflow: auto; }
-        .container { width: 100%; max-width: 1280px; margin-left: auto; margin-right: auto; }
-        .mt-24 { margin-top: 6rem; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
-    </style>
-
+    <!-- Hook for additional head content -->
     {!! hook('head') !!}
 </head>
 
-<body class="w-full bg-background text-base min-h-screen flex flex-col antialiased" x-cloak x-data="{darkMode: localStorage.getItem('darkMode') === 'true' || window.matchMedia('(prefers-color-scheme: dark)').matches}" :class="{'dark': darkMode}">
+<body class="bg-[#0d1117] text-gray-200 min-h-screen flex flex-col antialiased" 
+      x-data="{darkMode: true}" 
+      x-cloak>
+    <!-- Body hook -->
     {!! hook('body') !!}
+    
+    <!-- Navigation -->
     <x-navigation />
-    <div class="w-full flex flex-grow">
+    
+    <!-- Main content -->
+    <div class="flex flex-grow w-full">
         @if (isset($sidebar) && $sidebar)
             <x-navigation.sidebar title="$title" />
         @endif
-        <div class="{{ (isset($sidebar) && $sidebar) ? 'md:ml-64' : '' }} flex flex-col flex-grow overflow-auto">
-            <main class="container mt-24 mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+        
+        <div class="{{ (isset($sidebar) && $sidebar) ? 'md:ml-64' : '' }} flex-grow flex flex-col overflow-auto w-full">
+            <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-16">
                 {{ $slot }}
             </main>
+            
+            <!-- Notifications -->
             <x-notification />
-            <div class="py-8">
+            
+            <!-- Footer -->
+            <div class="mt-auto">
                 <x-navigation.footer />
             </div>
         </div>
     </div>
+    
+    <!-- Footer hook -->
     {!! hook('footer') !!}
-
-    <!-- Load JS at the end -->
-    <script src="/Cirrixo/assets/app-DvN4n7f7.js"></script>
-    <script src="/cirrixo/assets/app-DvN4n7f7.js"></script>
 </body>
 
 </html> 
