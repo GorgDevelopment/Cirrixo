@@ -1,0 +1,1 @@
+<img src="{{ asset('/cirrixo_theme.css') === null ? config('settings.logo') ? Storage::url(config('settings.logo')) : '/img/logo.svg' : Storage::url(config('settings.logo')) }}" {{ $attributes->class(['h-10']) }}> 

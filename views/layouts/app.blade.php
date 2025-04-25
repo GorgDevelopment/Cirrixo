@@ -12,6 +12,11 @@
         @endisset
     </title>
 
+    <!-- Style reset -->
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+
     <!-- Multiple CSS approaches to ensure one works -->
     <link rel="stylesheet" href="/Cirrixo/assets/app-HiANTs8a.css">
     <link rel="stylesheet" href="/cirrixo/assets/app-HiANTs8a.css">
@@ -87,7 +92,7 @@
     {!! hook('head') !!}
 </head>
 
-<body class="w-full bg-background text-base min-h-screen flex flex-col antialiased" x-data="{darkMode: localStorage.getItem('darkMode') === 'true' || window.matchMedia('(prefers-color-scheme: dark)').matches}" :class="{'dark': darkMode}">
+<body class="w-full bg-background text-base min-h-screen flex flex-col antialiased" x-cloak x-data="{darkMode: localStorage.getItem('darkMode') === 'true' || window.matchMedia('(prefers-color-scheme: dark)').matches}" :class="{'dark': darkMode}">
     {!! hook('body') !!}
     <x-navigation />
     <div class="w-full flex flex-grow">
