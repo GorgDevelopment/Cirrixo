@@ -7,6 +7,7 @@ export default defineConfig({
         laravel({
             input: ['themes/cirrixo/css/app.css', 'themes/cirrixo/js/app.js'],
             refresh: true,
+            buildDirectory: 'cirrixo',
         }),
     ],
     resolve: {
