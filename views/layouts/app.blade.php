@@ -13,7 +13,7 @@
     </title>
 
     <?php
-    $theme = Theme::active();
+    $theme = config('settings.theme', 'default');
     $manifestPath = public_path($theme . '/manifest.json');
     $lowerManifestPath = public_path(strtolower($theme) . '/manifest.json');
     
