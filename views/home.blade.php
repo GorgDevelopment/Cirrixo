@@ -1,99 +1,32 @@
 <div>
     <!-- Hero Section -->
-    <div class="relative mb-16">
-        <div class="bg-background-secondary border border-neutral p-4 sm:p-8 rounded-lg">
-            <div class="flex flex-col items-center text-center mb-8">
-                <div class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full mb-4">
-                    <span class="text-sm font-medium">Guaranteed DDoS Protection</span>
-                </div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Premium Hosting Solutions</h1>
-                <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">With Enterprise DDoS Protection</h2>
-                <p class="text-base/70 max-w-3xl mx-auto mb-8">
-                    High-performance servers with NVMe SSDs, enterprise-grade DDoS protection, and 24/7 expert technical support. Perfect for game servers, web hosting, and business applications.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ url('/products/vps') }}" wire:navigate>
-                        <button class="bg-primary text-white hover:bg-primary/90 transition-colors duration-200 py-3 px-8 rounded-md font-medium w-full sm:w-auto">
-                            View Our Services
-                        </button>
-                    </a>
-                    <a href="{{ route('tickets.create') }}" wire:navigate>
-                        <button class="bg-background text-base hover:bg-background-secondary border border-neutral py-3 px-8 rounded-md font-medium w-full sm:w-auto">
-                            Contact Sales
-                        </button>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-                <div class="bg-background p-6 rounded-lg border border-neutral">
-                    <div class="text-primary mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-1">High Performance</h3>
-                    <p class="text-base/70 text-sm">Powered by Ryzen 7 5900x</p>
-                </div>
-                
-                <div class="bg-background p-6 rounded-lg border border-neutral">
-                    <div class="text-primary mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-1">DDoS Protection</h3>
-                    <p class="text-base/70 text-sm">Up to 4 Tbps Mitigation</p>
-                </div>
-                
-                <div class="bg-background p-6 rounded-lg border border-neutral">
-                    <div class="text-primary mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-1">Ultra-Fast Storage</h3>
-                    <p class="text-base/70 text-sm">NVMe SSDs For All Plans</p>
-                </div>
-                
-                <div class="bg-background p-6 rounded-lg border border-neutral">
-                    <div class="text-primary mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-1">24/7 Support</h3>
-                    <p class="text-base/70 text-sm">Expert Technical Assistance</p>
-                </div>
-            </div>
+    <div class="hero">
+        <h1>Premium Hosting Solutions</h1>
+        <p>With Enterprise DDoS Protection</p>
+        <div class="flex gap-4 justify-center">
+            <a href="{{ route('category.index') }}" class="btn btn-primary">View Our Services</a>
+            <a href="{{ route('tickets.create') }}" class="btn btn-outline">Contact Sales</a>
         </div>
     </div>
 
-    <!-- Products/Categories Section -->
-    <div class="mx-auto container rounded-md grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+    <!-- Categories -->
+    <div class="features">
         @foreach ($categories as $category)
-            <div class="flex flex-col bg-background-secondary hover:bg-background-secondary/80 border border-neutral p-4 rounded-lg">
-                @if(theme('small_images', false))
-                    <div class="flex gap-x-3 items-center">
-                @endif
-                @if ($category->image)
-                    <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}"
-                        class="rounded-md {{ theme('small_images', false) ? 'w-14 h-fit' : 'w-full object-cover object-center' }}">
-                @endif
-                <h2 class="text-xl font-bold mt-3">{{ $category->name }}</h2>
-                @if(theme('small_images', false))
-                    </div>
-                @endif
-                @if(theme('show_category_description', true))
-                    <article class="mt-2 prose dark:prose-invert">
-                        {!! $category->description !!}
-                    </article>
-                @endif
-                <a href="{{ route('category.show', ['category' => $category->slug]) }}" wire:navigate class="mt-3">
-                    <button class="btn-primary w-full">
+            <div class="card">
+                <div class="card-body">
+                    @if ($category->image)
+                        <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}" class="w-full h-40 object-cover object-center rounded-md mb-4">
+                    @endif
+                    <h3 class="card-title">{{ $category->name }}</h3>
+                    @if(theme('show_category_description', true))
+                        <div class="card-text">
+                            {!! $category->description !!}
+                        </div>
+                    @endif
+                    <a href="{{ route('category.show', ['category' => $category->slug]) }}" wire:navigate class="btn btn-primary">
                         {{ __('general.view') }}
-                    </button>
-                </a>
+                    </a>
+                </div>
             </div>
         @endforeach
     </div>

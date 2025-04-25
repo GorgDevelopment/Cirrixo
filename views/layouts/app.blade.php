@@ -17,8 +17,81 @@
         [x-cloak] { display: none !important; }
     </style>
 
-    <!-- Theme CSS -->
+    <!-- Critical inline CSS for the theme -->
+    <style>
+        :root {
+            --primary-color: #0091ff;
+            --primary-dark: #0077e0;
+            --primary-light: #33a6ff;
+            --background-color: #0d1117;
+            --background-secondary-color: #161b22;
+            --card-bg: #1c2128;
+            --text-color: #e6edf3;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
+            --success-color: #2ea043;
+            --warning-color: #d29922;
+            --danger-color: #f85149;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        .navbar {
+            background-color: var(--background-secondary-color);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer {
+            background-color: var(--background-secondary-color);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 0.375rem;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+    </style>
+
+    <!-- Direct theme CSS - trying multiple paths -->
+    <link rel="stylesheet" href="/assets/cirrixo_theme.css">
     <link rel="stylesheet" href="/cirrixo_theme.css">
+    <link rel="stylesheet" href="/Cirrixo/assets/cirrixo_theme.css">
+    <style>
+        @import url('/cirrixo_theme.css');
+    </style>
     
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
