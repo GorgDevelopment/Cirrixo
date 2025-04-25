@@ -1,11 +1,17 @@
 <div>
     <!-- Hero Section -->
-    <div class="hero">
-        <h1>Premium Hosting Solutions</h1>
-        <p>With Enterprise DDoS Protection</p>
-        <div class="flex gap-4 justify-center">
-            <a href="{{ url('/') }}" class="btn btn-primary">View Our Services</a>
-            <a href="{{ route('home') }}" class="btn btn-outline">
+    <div class="bg-[#141c2b] rounded-lg p-16 md:p-24 my-6 text-center relative overflow-hidden border border-[#2a3544] shadow-xl">
+        <!-- Background glow effect -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-[#00A8FF] opacity-10"></div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white relative z-10">Premium Hosting Solutions</h1>
+        <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto relative z-10">With Enterprise DDoS Protection</p>
+        
+        <div class="flex flex-wrap gap-3 justify-center relative z-10">
+            <a href="{{ route('home') }}" class="bg-[#00A8FF] hover:bg-[#0099e6] text-white px-6 py-3 rounded-md font-medium transition-all">
+                View Our Services
+            </a>
+            <a href="{{ route('home') }}" class="bg-transparent border border-[#2a3544] hover:border-[#00A8FF] text-white px-6 py-3 rounded-md font-medium transition-all">
                 Contact Sales
             </a>
         </div>
