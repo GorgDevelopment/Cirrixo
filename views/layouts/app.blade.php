@@ -11,7 +11,29 @@
             - {{ $title }}
         @endisset
     </title>
-    @vite(['themes/' . config('settings.theme') . '/js/app.js', 'themes/' . config('settings.theme') . '/css/app.css'], config('settings.theme'))
+    
+    <!-- Attempt to load assets with Vite, with fallback to direct asset loading -->
+    @php
+    $theme = config('settings.theme');
+    $success = false;
+    
+    try {
+        // Vite tries to use the manifest.json file which might not exist
+        $manifest = json_decode(file_get_contents(public_path($theme . '/manifest.json')), true);
+        $success = !empty($manifest);
+    } catch (\Exception $e) {
+        $success = false;
+    }
+    @endphp
+    
+    @if ($success)
+        @vite(['themes/' . $theme . '/js/app.js', 'themes/' . $theme . '/css/app.css'], $theme)
+    @else
+        <!-- Fallback for when Vite manifest isn't found -->
+        <script src="{{ asset('cirrixo/assets/app-DvN4n7f7.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('cirrixo/assets/app-HiANTs8a.css') }}">
+    @endif
+
     @include('layouts.colors')
 
     @if (config('settings.logo'))
