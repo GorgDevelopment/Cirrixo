@@ -12,12 +12,12 @@
                     High-performance servers with NVMe SSDs, enterprise-grade DDoS protection, and 24/7 expert technical support. Perfect for game servers, web hosting, and business applications.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ route('products') }}" wire:navigate>
+                    <a href="{{ url('/products/vps') }}" wire:navigate>
                         <button class="bg-primary text-white hover:bg-primary/90 transition-colors duration-200 py-3 px-8 rounded-md font-medium w-full sm:w-auto">
                             View Our Services
                         </button>
                     </a>
-                    <a href="{{ route('contact') }}" wire:navigate>
+                    <a href="{{ route('tickets.create') }}" wire:navigate>
                         <button class="bg-background text-base hover:bg-background-secondary border border-neutral py-3 px-8 rounded-md font-medium w-full sm:w-auto">
                             Contact Sales
                         </button>
@@ -277,7 +277,7 @@
             
             <div class="text-center mt-8">
                 <p class="text-base/70 mb-4">Have more questions?</p>
-                <a href="{{ route('contact') }}" wire:navigate>
+                <a href="{{ route('tickets.create') }}" wire:navigate>
                     <button class="bg-primary text-white hover:bg-primary/90 transition-colors duration-200 py-2 px-6 rounded-md font-medium">
                         Contact Us
                     </button>
