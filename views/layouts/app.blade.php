@@ -39,16 +39,16 @@
         [x-cloak] { display: none !important; }
         
         :root {
-            --primary-color: #0095ff;
-            --primary-dark: #0077e6;
-            --primary-light: #33a9ff;
-            --primary-gradient: linear-gradient(135deg, #0095ff, #0077e6);
-            --background-color: #0d1117;
-            --background-secondary-color: #161b22;
-            --card-bg: #1a1f28;
+            --primary-color: #00A8FF;
+            --primary-dark: #0088cc;
+            --primary-light: #33baff;
+            --primary-gradient: linear-gradient(135deg, #00A8FF, #0088cc);
+            --background-color: #0c1220;
+            --background-secondary-color: #141c2b;
+            --card-bg: #1a2433;
             --text-color: #e6edf3;
             --text-muted: #8b949e;
-            --border-color: #30363d;
+            --border-color: #2a3544;
             --success-color: #2ea043;
             --warning-color: #d29922;
             --danger-color: #f85149;
@@ -109,7 +109,7 @@
 
         /* Hero section */
         .hero {
-            background: var(--card-bg);
+            background: var(--background-secondary-color);
             border-radius: var(--border-radius);
             padding: 4rem 2rem;
             margin-bottom: 3rem;
@@ -127,16 +127,14 @@
             height: 100%;
             top: 0;
             left: 0;
-            background: radial-gradient(circle at top right, rgba(0,149,255,0.1), transparent 60%);
+            background: radial-gradient(circle at top right, rgba(0,168,255,0.1), transparent 60%);
             z-index: 0;
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, #fff, #cdf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #ffffff;
             position: relative;
             z-index: 1;
         }
@@ -214,12 +212,12 @@
         .btn-primary {
             background: var(--primary-gradient);
             color: white;
-            box-shadow: 0 4px 12px rgba(0, 119, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 168, 255, 0.3);
         }
 
         .btn-primary:hover {
-            background: linear-gradient(135deg, #33a9ff, #0077e6);
-            box-shadow: 0 6px 16px rgba(0, 119, 255, 0.4);
+            background: linear-gradient(135deg, #33baff, #0088cc);
+            box-shadow: 0 6px 16px rgba(0, 168, 255, 0.4);
             transform: translateY(-1px);
         }
 
@@ -240,7 +238,7 @@
 
         /* Navigation */
         .navbar {
-            background-color: rgba(22, 27, 34, 0.8);
+            background-color: rgba(20, 28, 43, 0.8);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
@@ -266,7 +264,7 @@
         .navbar-logo {
             height: 2rem;
             margin-right: 0.5rem;
-            filter: drop-shadow(0 0 2px rgba(0, 149, 255, 0.3));
+            filter: drop-shadow(0 0 2px rgba(0, 168, 255, 0.3));
         }
 
         .navbar-menu {
@@ -333,7 +331,7 @@
         .footer-logo {
             height: 2rem;
             width: auto;
-            filter: drop-shadow(0 0 2px rgba(0, 149, 255, 0.3));
+            filter: drop-shadow(0 0 2px rgba(0, 168, 255, 0.3));
         }
 
         .footer-heading {
@@ -364,13 +362,13 @@
             width: 2.5rem;
             height: 2.5rem;
             border-radius: 50%;
-            background-color: rgba(30, 41, 59, 0.5);
+            background-color: var(--card-bg);
             margin-right: 0.5rem;
         }
 
         .footer-social-link:hover {
             color: var(--primary-color);
-            background-color: rgba(30, 41, 59, 0.8);
+            background-color: rgba(26, 36, 51, 0.8);
             transform: translateY(-3px);
         }
 
@@ -419,7 +417,7 @@
             height: 3.5rem;
             margin-bottom: 1.25rem;
             color: var(--primary-color);
-            filter: drop-shadow(0 0 5px rgba(0, 149, 255, 0.3));
+            filter: drop-shadow(0 0 5px rgba(0, 168, 255, 0.3));
         }
 
         .feature-title {
@@ -464,12 +462,12 @@
 
         .faq-question:hover {
             border-left-color: var(--primary-color);
-            background-color: rgba(26, 31, 40, 0.8);
+            background-color: rgba(26, 36, 51, 0.8);
         }
 
         .faq-answer {
             padding: 1.25rem;
-            background-color: rgba(22, 27, 34, 0.5);
+            background-color: rgba(20, 28, 43, 0.5);
             color: var(--text-muted);
             border-top: 1px solid var(--border-color);
         }
